@@ -1,0 +1,14 @@
+server {
+    listen 80;
+    server_name localhost;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root {{ app_dir }};
+    }
+
+    location / {
+        include         uwsgi_params;
+        uwsgi_pass      unix:/run/uwsgi/app.sock;
+    }
+}

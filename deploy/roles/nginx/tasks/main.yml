@@ -1,0 +1,21 @@
+
+- name: Copy nginx app file
+  template:
+    src: nginx-app.j2
+    dest: /etc/nginx/sites-available/app
+    owner: '{{ user }}'
+
+- name: Link sites-available to sites-enabled
+  file:
+    src: /etc/nginx/sites-available/app
+    path: /etc/nginx/sites-enabled/app
+    state: link
+
+- name: Check the config syntax
+  command: nginx -t
+
+- name: Restart nginx
+  systemd:
+    name: nginx
+    enabled: yes
+    state: restarted

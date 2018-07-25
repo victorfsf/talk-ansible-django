@@ -1,4 +1,10 @@
 user: victor
 ansible_sudo_user: victor
 ansible_sudo_pass: ansible
+
 app_dir: /home/victor/app
+virtualenv_dir: /home/victor/app/venv
+
+superuser: admin
+superuser_email: admin@example.com
+superuser_pass: 1

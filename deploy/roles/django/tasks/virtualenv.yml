@@ -1,0 +1,14 @@
+
+- name: Check if virtualenv exists
+  command: ls bin/activate
+  args:
+    chdir: '{{ virtualenv_dir }}'
+  register: virtualenv_exists
+  ignore_errors: true
+
+- name: Create virtualenv
+  command: python3 -m venv venv
+  args:
+    chdir: '{{ app_dir }}'
+  become_user: '{{ user }}'
+  when: virtualenv_exists.rc != 0

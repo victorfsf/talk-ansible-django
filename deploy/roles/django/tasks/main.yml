@@ -1,6 +1,19 @@
 
-- name: Install django
+- import_tasks: virtualenv.yml
+
+- name: Install requirements
   pip:
     chdir: '{{ app_dir }}'
     requirements: requirements.txt
-    virtualenv: '{{ app_dir }}/venv'
+    virtualenv: '{{ virtualenv_dir }}'
+
+- name: Run migrate, collectstatic & createsuperuser (shell)
+  django_manage:
+    command: '{{ item }}'
+    app_path: '{{ app_dir }}'
+    virtualenv: '{{ virtualenv_dir }}'
+  loop:
+    - migrate
+    - collectstatic
+    - shell -c "{{ lookup('template', 'createsuperuser.py.j2') }}"
+  become_user: '{{ user }}'

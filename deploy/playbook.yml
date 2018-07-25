@@ -6,5 +6,15 @@
   become_user: root
   become_method: sudo
   roles:
-    - base
-    - django
+    - role: base
+      tags:
+        - base
+    - role: django
+      tags:
+        - django
+    - role: uwsgi
+      tags:
+        - uwsgi
+    - role: nginx
+      tags:
+        - nginx

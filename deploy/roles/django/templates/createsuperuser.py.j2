@@ -1,0 +1,11 @@
+from django.contrib.auth.models import User
+
+superusers = User.objects.filter(username='{{ superuser }}')
+if superusers.exists():
+    superuser = superusers.first()
+    superuser.set_password('{{ superuser_pass }}')
+    superuser.save()
+else:
+    User.objects.create_superuser(
+        '{{ superuser }}', '{{ superuser_email }}', '{{ superuser_pass }}'
+    )
