@@ -1,4 +1,10 @@
 
+- name: Link sites-available to sites-enabled
+  file:
+    src: /etc/nginx/sites-available/app
+    path: /etc/nginx/sites-enabled/app
+    state: link
+
 - name: Restart nginx
   systemd:
     name: nginx
