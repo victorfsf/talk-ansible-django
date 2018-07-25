@@ -1,0 +1,5 @@
+[production]
+localhost:3022
+
+[production:vars]
+ansible_python_interpreter=/usr/bin/python3
