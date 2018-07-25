@@ -13,9 +13,4 @@
 
 - name: Check the config syntax
   command: nginx -t
-
-- name: Restart nginx
-  systemd:
-    name: nginx
-    enabled: yes
-    state: restarted
+  notify: Restart nginx

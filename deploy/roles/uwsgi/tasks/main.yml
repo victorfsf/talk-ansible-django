@@ -23,7 +23,7 @@
     state: directory
     owner: '{{ user }}'
 
-- name: Make sure the app is running
+- name: Restart app
   systemd:
     name: djangoapp
     daemon_reload: yes
