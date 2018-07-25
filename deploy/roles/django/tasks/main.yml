@@ -1,0 +1,6 @@
+
+- name: Install django
+  pip:
+    chdir: '{{ app_dir }}'
+    requirements: requirements.txt
+    virtualenv: '{{ app_dir }}/venv'

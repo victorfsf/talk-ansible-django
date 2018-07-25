@@ -15,9 +15,16 @@
     - python3-dev
     - python3-pip
 
-- name: Clone project
-  git:
-    repo: git@github.com:victorfsf/talk-ansible-django.git
-    dest: '/home/{{ user }}/app'
-  become_user: '{{ user }}'
+- block:
+  - name: Clone project
+    git:
+      repo: git@github.com:victorfsf/talk-ansible-django.git
+      dest: '{{ app_dir }}'
+      accept_hostkey: yes
 
+  - name: Create virtualenv
+    command: python3 -m venv venv
+    args:
+      chdir: '{{ app_dir }}'
+
+  become_user: '{{ user }}'

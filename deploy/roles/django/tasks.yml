@@ -1,4 +1,0 @@
-
-- name: Install django
-  pip:
-    requirements: django

@@ -1,3 +1,4 @@
 user: victor
 ansible_sudo_user: victor
 ansible_sudo_pass: ansible
+app_dir: /home/victor/app
