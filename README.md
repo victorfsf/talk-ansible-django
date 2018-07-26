@@ -2,5 +2,5 @@
 
 Running the playbook:
 ```bash
-ansible-playbook -i inventory -l production playbook.yml -e "branch=master"
+cd deploy && ansible-playbook -i inventory -l production playbook.yml -e "branch=master"
 ```
